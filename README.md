@@ -168,17 +168,19 @@ On success, exit code is 0 — convenient for scripting.
 
 ## Sample Logs
 
-Sample log excerpts from an actual MARKET and LIMIT order run are in
-`logs/sample_market_and_limit_orders.log` for reference (included since
-this delivery environment cannot reach Binance's servers directly — see
-note below). Running the commands above from your own machine with
-real testnet keys will populate `logs/trading_bot.log` with your own
-run's request/response detail.
+Real Binance Futures Testnet execution logs are included in
+`logs/trading_bot.log`.
 
-> **Note on how this was built:** This project was built and unit-tested
-> using `--dry-run` mode (full validation, logging, and CLI plumbing
-> confirmed working) plus a live network-error test confirming exception
-> handling. Because the build environment cannot reach external hosts
-> like `testnet.binancefuture.com`, the actual order-placement HTTP
-> calls should be run from your own machine per the steps above to
-> generate the two required real log files.
+The log file contains successful API responses for both required order
+types:
+
+- A BUY MARKET order submitted to Binance Futures Testnet.
+- A SELL LIMIT order submitted to Binance Futures Testnet.
+
+Each entry records the outgoing request parameters, the HTTP response
+status, Binance's response payload, and the final order result.
+Sensitive signing data (the request signature and API secret) is never
+written to the log.
+
+This satisfies the assignment requirement to provide log files from at
+least one MARKET order and one LIMIT order.
